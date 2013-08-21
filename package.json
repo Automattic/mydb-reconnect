@@ -1,0 +1,13 @@
+{
+  "name": "mydb-reconnect",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "debug": "*"
+  },
+  "component": {
+    "scripts": {
+      "mydb-reconnect/index.js": "index.js"
+    }
+  }
+}
