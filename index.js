@@ -32,6 +32,7 @@ function Reconnect(db, opts){
   this.onconnect = this.onconnect.bind(this);
   this.onerror = this.onerror.bind(this);
   this.ontimeout = this.ontimeout.bind(this);
+  this.ondisconnect = this.ondisconnect.bind(this);
 
   // reconnection state
   this.reconnecting = false;
@@ -41,7 +42,7 @@ function Reconnect(db, opts){
   if (!db.connected) this.setConnectTimeout();
 
   // set connect timeout every time we disconnect
-  db.on('disconnect', this.ondisconnect.bind(this));
+  db.on('disconnect', this.ondisconnect);
 }
 
 /**
