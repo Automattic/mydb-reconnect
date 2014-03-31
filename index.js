@@ -100,7 +100,7 @@ Reconnect.prototype.retry = function(){
   debug('retrying in %dms', this.retryTimeout);
 
   var self = this;
-  setTimeout(function(){
+  this.retryTimer = setTimeout(function(){
     debug('retrying');
     self.setConnectTimeout();
     self.db.reconnect();
@@ -150,4 +150,18 @@ Reconnect.prototype.onerror = function(){
   debug('connection error');
   this.cancel();
   this.retry();
+};
+
+/**
+ * Destroys reconnection attempts.
+ *
+ * @api public
+ */
+
+Reconnect.prototype.destroy = function(){
+  debug('destroy');
+  this.destroyed = true;
+  this.cancel();
+  clearTimeout(this.retryTimer);
+  this.db.off('disconnect', this.ondisconnect);
 };
