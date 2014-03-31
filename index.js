@@ -116,19 +116,16 @@ Reconnect.prototype.retry = function(){
  */
 
 Reconnect.prototype.cancel = function(){
-  if (!this.connectTimer) {
-    console.warn('no connect timeout ongoing');
-    return;
-  }
-
   // in case we were retrying
   this.retrying = false;
 
   debug('clearing connect timeout');
   clearTimeout(this.connectTimer);
+
   this.db.off('connect', this.onconnect);
   this.db.off('connect_error', this.onerror);
-  delete this.connectTimer;
+
+  if (this.connectTimer) delete this.connectTimer;
 };
 
 /**
