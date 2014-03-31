@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var debug = require('debug')('cloudup:mydb-reconnect');
+var debug = require('debug')('mydb-reconnect');
 
 /**
  * Module exports.
