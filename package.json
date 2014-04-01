@@ -1,9 +1,9 @@
 {
   "name": "mydb-reconnect",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "reconnection module for mydb",
   "dependencies": {
-    "debug": "*"
+    "debug": "0.7.4"
   },
   "component": {
     "scripts": {
